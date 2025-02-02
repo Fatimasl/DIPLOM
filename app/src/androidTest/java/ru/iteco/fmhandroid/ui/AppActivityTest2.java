@@ -56,14 +56,14 @@ public class AppActivityTest2 {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
     }
 
-    @Test
-    public void appActivityTest1() {
-
-        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
-        textInputEditText.check(matches(isDisplayed()));
-        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
-
-    }
+//    @Test
+//    public void appActivityTest1() {
+//
+//        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
+//        textInputEditText.check(matches(isDisplayed()));
+//        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
+//
+//    }
 
     @Test
     public void appActivityTest2() {
@@ -72,6 +72,7 @@ public class AppActivityTest2 {
         textInputEditText.check(matches(isDisplayed()));
         textInputEditText.perform(click());
         textInputEditText.perform(pressKey(10), closeSoftKeyboard());
+        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
 
     }
 

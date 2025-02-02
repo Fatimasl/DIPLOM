@@ -233,10 +233,11 @@ class SplashScreenFragment : Fragment(R.layout.fragment_splash_screen) {
         }
 
         lifecycleScope.launch {
-            delay(1_500)
+            delay(3_000)
             authViewModel.authorization()
             EspressoIdlingResources.decrement()
         }
+        //EspressoIdlingResources.decrement()
     }
 
     override fun onDestroyView() {
