@@ -61,8 +61,8 @@ public class AppActivityTest2 {
 
     @Test
     public void appActivityTest2() throws InterruptedException {
-        Thread.sleep(10_000);
-        //onView(isRoot()).perform(waitDisplayed(R.id.login_text_input_layout, 10_000));
+        //Thread.sleep(10_000);
+        onView(isRoot()).perform(waitDisplayed(R.id.login_text_input_layout, 10_000));
         ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
         textInputEditText.check(matches(isDisplayed()));
         //textInputEditText.perform(click());
