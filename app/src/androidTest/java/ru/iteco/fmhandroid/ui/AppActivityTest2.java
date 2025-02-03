@@ -8,6 +8,7 @@ import static androidx.test.espresso.action.ViewActions.pressKey;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -15,6 +16,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
+
+import static ru.iteco.fmhandroid.Helper.waitDisplayed;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,32 +49,24 @@ public class AppActivityTest2 {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-    @Before
-    public void registerIdlingResources() {
-        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
-    }
+//    @Before
+//    public void registerIdlingResources() {
+//        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+//    }
 
-    @After
-    public void unregisterIdlingResources() {
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
-    }
-
-//    @Test
-//    public void appActivityTest1() {
-//
-//        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
-//        textInputEditText.check(matches(isDisplayed()));
-//        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
-//
+//    @After
+//    public void unregisterIdlingResources() {
+//        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
 //    }
 
     @Test
-    public void appActivityTest2() {
-
+    public void appActivityTest2() throws InterruptedException {
+        Thread.sleep(10_000);
+        //onView(isRoot()).perform(waitDisplayed(R.id.login_text_input_layout, 10_000));
         ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
         textInputEditText.check(matches(isDisplayed()));
-        textInputEditText.perform(click());
-        textInputEditText.perform(pressKey(10), closeSoftKeyboard());
+        //textInputEditText.perform(click());
+        //textInputEditText.perform(pressKey(10), closeSoftKeyboard());
         textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
 
     }
