@@ -49,14 +49,22 @@ public class AppActivityTest2 {
     @Rule
     public ActivityScenarioRule<AppActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(AppActivity.class);
-//    @Before
-//    public void registerIdlingResources() {
-//        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
-//    }
+    @Before
+    public void registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResources.idlingResource);
+    }
 
-//    @After
-//    public void unregisterIdlingResources() {
-//        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    @After
+    public void unregisterIdlingResources() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResources.idlingResource);
+    }
+//    @Test
+//    public void appActivityTest1() {
+//        ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
+//        textInputEditText.check(matches(isDisplayed()));
+//        textInputEditText.perform(click());
+//        textInputEditText.perform(pressKey(10), closeSoftKeyboard());
+//        textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
 //    }
 
     @Test
@@ -65,10 +73,7 @@ public class AppActivityTest2 {
         onView(isRoot()).perform(waitDisplayed(R.id.login_text_input_layout, 10_000));
         ViewInteraction textInputEditText = onView(withId(R.id.login_text_input_layout));
         textInputEditText.check(matches(isDisplayed()));
-        //textInputEditText.perform(click());
-        //textInputEditText.perform(pressKey(10), closeSoftKeyboard());
         textInputEditText.perform(replaceText("login2"), closeSoftKeyboard());
-
     }
 
     private static Matcher<View> childAtPosition(
